@@ -1,0 +1,361 @@
+/* SahityaBitt - Stylesheet */
+
+:root {
+    --bg-color: #f5f0e6;
+    --text-color: #3e3b36;
+    --header-color: #111111;
+    --accent-color: #c0a878;
+    --secondary-accent: #d4c5a9;
+    --white: #ffffff;
+    --font-main: 'Georgia', serif;
+    --font-ui: 'Helvetica Neue', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+/* --- Typography --- */
+h1, h2, h3, h4 {
+    color: var(--header-color);
+    font-weight: normal;
+    letter-spacing: -0.02em;
+}
+
+a {
+    text-decoration: none;
+    color: var(--header-color);
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: var(--accent-color);
+}
+
+/* --- Navigation --- */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 5%;
+    background-color: transparent;
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    border-bottom: 2px solid var(--accent-color);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+}
+
+.nav-links li a {
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* --- Hero Section --- */
+.hero {
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--white);
+    overflow: hidden;
+}
+
+.hero-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Basantapur/Heritage Style Image */
+    background-image: url('https://images.unsplash.com/photo-1544634076-a90160ddf44c?q=80&w=1920&auto=format&fit=crop');
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6) sepia(0.2);
+    z-index: -1;
+}
+
+.hero-content h1 {
+    color: var(--white);
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: fadeUp 1s ease forwards;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto 2rem;
+    opacity: 0.9;
+    animation: fadeUp 1.2s ease forwards;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0.8rem 2rem;
+    background-color: var(--accent-color);
+    color: var(--white);
+    font-family: var(--font-ui);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: var(--text-color);
+    transform: translateY(-2px);
+}
+
+/* --- Layouts & Grids --- */
+.container {
+    max-width: 1400px;
+    margin: 4rem auto;
+    padding: 0 5%;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 3rem;
+    font-style: italic;
+}
+
+/* Masonry Grid */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-auto-rows: 250px;
+    gap: 20px;
+}
+
+.card {
+    background: var(--white);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    opacity: 0; /* Hidden for scroll animation */
+    transform: translateY(20px);
+}
+
+.card.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+}
+
+.card:hover img {
+    transform: scale(1.05);
+}
+
+.card-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    padding: 2rem 1.5rem 1.5rem;
+    color: var(--white);
+    transform: translateY(20px);
+    transition: transform 0.4s ease;
+}
+
+.card:hover .card-overlay {
+    transform: translateY(0);
+}
+
+.card-title {
+    color: var(--white);
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+}
+
+.card-excerpt {
+    font-size: 0.9rem;
+    opacity: 0.8;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Card Sizes */
+.card.wide {
+    grid-column: span 2;
+}
+
+.card.tall {
+    grid-row: span 2;
+}
+
+/* --- Modal --- */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(17, 17, 17, 0.95);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+
+.modal-content {
+    background: var(--bg-color);
+    width: 90%;
+    max-width: 800px;
+    height: 85vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow-y: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2rem;
+    cursor: pointer;
+    color: var(--header-color);
+    z-index: 10;
+}
+
+.modal-image {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+}
+
+.modal-text {
+    padding: 3rem;
+}
+
+.modal-text h2 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid var(--accent-color);
+    padding-bottom: 1rem;
+}
+
+.modal-text p {
+    font-size: 1.1rem;
+    white-space: pre-line; /* Preserves poetic line breaks */
+    margin-bottom: 1.5rem;
+}
+
+/* --- Forms --- */
+.form-container {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-family: var(--font-ui);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+input, textarea, select {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid #ddd;
+    background: transparent;
+    font-family: var(--font-main);
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+input:focus, textarea:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+/* --- Footer --- */
+footer {
+    background: var(--header-color);
+    color: var(--bg-color);
+    padding: 4rem 5%;
+    text-align: center;
+    margin-top: 4rem;
+}
+
+.social-links {
+    margin: 2rem 0;
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social-links a {
+    color: var(--accent-color);
+    font-size: 1.2rem;
+}
+
+/* --- Animations --- */
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* Simplified for demo */
+    .hero-content h1 { font-size: 2.5rem; }
+    .card.wide { grid-column: span 1; }
+    .modal-text { padding: 1.5rem; }
+}
