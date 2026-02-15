@@ -182,4 +182,28 @@ document.addEventListener('DOMContentLoaded', () => {
             observer.observe(card);
         });
     }
+
+    const orderForm = document.getElementById('custom-order-form');
+if (orderForm) {
+    orderForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const card = document.querySelector('.form-popup-card');
+        
+        // Simple success animation
+        card.style.transform = "scale(0.9) translateY(-20px)";
+        card.style.opacity = "0";
+        
+        setTimeout(() => {
+            card.innerHTML = `
+                <div style="text-align:center; padding: 40px;">
+                    <h3 style="font-style: italic; font-size: 2rem;">Message Received.</h3>
+                    <p style="margin-top: 1rem;">We have captured your spark. A writer will reach out within 24 hours.</p>
+                    <a href="index.html" class="btn" style="margin-top: 2rem;">Return Home</a>
+                </div>
+            `;
+            card.style.transform = "scale(1) translateY(0)";
+            card.style.opacity = "1";
+        }, 600);
+    });
+}
 });
