@@ -359,3 +359,57 @@ footer {
     .card.wide { grid-column: span 1; }
     .modal-text { padding: 1.5rem; }
 }
+.branding-hero {
+    background-color: #fcfaf7; /* Slightly lighter than bg for contrast */
+    padding: 6rem 5%;
+    text-align: center;
+    border-bottom: 1px solid var(--secondary-accent);
+}
+
+.subtitle {
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    font-size: 0.8rem;
+    color: var(--accent-color);
+    font-family: var(--font-ui);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.branding-hero h2 {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    font-style: italic;
+}
+
+.branding-hero p {
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.process-steps {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 3rem;
+    margin-top: 2rem;
+}
+
+.step-num {
+    font-family: var(--font-ui);
+    color: var(--secondary-accent);
+    font-size: 3rem;
+    font-weight: 200;
+    display: block;
+}
+
+.step h4 {
+    margin: 1rem 0;
+    font-size: 1.3rem;
+}
+
+.step p {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
