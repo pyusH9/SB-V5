@@ -413,3 +413,91 @@ footer {
     font-size: 0.95rem;
     line-height: 1.4;
 }
+/* Branding Cards Grid */
+.branding-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 5rem;
+}
+
+.brand-card {
+    background: #fff;
+    padding: 2.5rem;
+    border: 1px solid var(--secondary-accent);
+    transition: all 0.4s ease;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeUp 0.8s forwards;
+}
+
+.brand-card:nth-child(2) { animation-delay: 0.2s; }
+.brand-card:nth-child(3) { animation-delay: 0.4s; }
+
+.brand-card:hover {
+    border-color: var(--accent-color);
+    background: #fdfcf9;
+    box-shadow: 0 10px 30px rgba(192, 168, 120, 0.1);
+}
+
+/* Form Card Pop-up Styling */
+.form-popup-card {
+    background: #fff;
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 3.5rem;
+    border-radius: 2px;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+    border-top: 4px solid var(--accent-color); /* Elegant top accent */
+    position: relative;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.form-popup-card.visible {
+    opacity: 1;
+    transform: scale(1);
+    margin-top: -2rem; /* Pulls it up slightly into the section above */
+}
+
+.form-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.form-header h3 {
+    font-size: 2.2rem;
+    font-style: italic;
+    margin-bottom: 0.5rem;
+}
+
+.form-header p {
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.wide-btn {
+    width: 100%;
+    margin-top: 1rem;
+    padding: 1.2rem;
+    font-size: 1rem;
+}
+
+/* Animation for the card */
+@keyframes fadeUp {
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+    .form-row { grid-template-columns: 1fr; }
+    .form-popup-card { padding: 2rem; }
+}
